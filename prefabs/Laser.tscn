@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Laser.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fire"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("BeamCharger:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire"
+} ]
+}
+
+[node name="Laser" type="Node2D"]
+position = Vector2( 25.7024, 5.91156 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+length = 300
+
+[node name="BeamCharger" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -2.0
+margin_right = 2.0
+margin_bottom = 40.0
+
+[node name="Laser" type="ColorRect" parent="."]
+margin_left = -4.0
+margin_right = 4.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fire = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
