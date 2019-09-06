@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://prefabs/abstract/BulletBehaviour.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/Bullet.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 19.7042, 20.9083, -9.53573, -8.8546, 9.53573, 8.8546, 1.31389, 76.4198, 2.04337, -18.3903, -2.04337, 18.3903, 25.8343, 121.715, 0, 0, 0, 0, 9.48737, 157.473 )
+}
+
+[node name="Turret" type="Node2D"]
+
+[node name="BulletBehaviour" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20, 34 )
+pathType = 0
+path = NodePath("../Path2D")
+bullet = ExtResource( 2 )
+
+[node name="PlaceHolderSprite" type="ColorRect" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Facing" type="ColorRect" parent="PlaceHolderSprite"]
+margin_left = 20.0
+margin_top = 35.0
+margin_right = 22.0
+margin_bottom = 43.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+

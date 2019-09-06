@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/ShapeBullet.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/Bullet.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+[node name="ShapeBullet" type="Control"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 479.333, 182.388 )
+script = ExtResource( 1 )
+shape = SubResource( 1 )
+bullet = ExtResource( 2 )
+nb_bullet = 12
+
+[node name="Button" type="Button" parent="."]
+margin_left = 22.8
+margin_top = 5.7
+margin_right = 121.8
+margin_bottom = 45.7
+text = "Release"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 23.0
+margin_top = 61.0
+margin_right = 123.0
+margin_bottom = 101.0
+text = "Reload"
+
+[connection signal="pressed" from="Button" to="Node2D" method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="Node2D" method="_on_Button2_pressed"]
